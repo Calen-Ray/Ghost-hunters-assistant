@@ -1,0 +1,9 @@
+#ghost-list li {
+    list-style-type:  "\1F47B";
+}
+
+#ghost-list li.excluded{
+    list-style-type:  "\274C";
+    opacity: 0.5;
+    text-decoration: line-through wavy;
+}
