@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<link rel="stylesheet" href="{% static 'main.css' %}">
+
+<div id="app">
+    <select name="" id="" v-model='page'>
+        <option value="home">home</option>
+        <option value="Profile">Profile</option>
+        <option value="Market">Market</option>
+    </select>
+
+
+    <!-- Pokedex area -->
+    <div v-if='page==="home"'>
+        <div class='poke'>
+            <pokemon-card 
+            v-for='poke in bigList'
+            :poke='poke'
+            :key='poke.id'
+            >
+            </pokemon-card>
+        </div>
+    </div>
+
+
+
+    <!-- Profile page -->
+    <div v-if='page=="Profile"'>
+        <profile-page
+        :user='current_user'
+        ></profile-page>
+    </div>
+
+
+
+    <div class="details">
+        <!-- [[detail]] -->
+    </div>
+
+</div>
+
+
+
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="{% static 'app.js'%}"></script>
+
+    
+</body>
+</html>
