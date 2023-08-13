@@ -8,10 +8,36 @@
     src: url(fonts/october_crow/October\ Crow.ttf);
 }
 
+.modal-cover{
+    width: 100vw;
+    min-height: 10vh;
+    top: 90%;
+    /* background-color: black; */
+    z-index: 5;
+    position: fixed;
+    background: linear-gradient(#0000009f, #000000), rgba(0,0,0,0.2);
+}
+
+.modal-title{
+    min-height: 30vh;
+    min-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    position: absolute;
+}
+
+.down-arrow{
+    align-self: center;
+    transform: translate3d(0px, 10vh, 0px);
+}
+
 #app {
     display: grid;
     /* overflow: scroll; */
-    background-color: rgba(8, 8, 8, 0.678);
+     /* background-color: rgba(8, 8, 8, 0.678); */
+    /* background-color: black; */
 }
 
 .footer {
@@ -26,6 +52,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 6;
 }
 
 .footer i{
@@ -45,6 +72,10 @@ h1 {
     grid-column-end: 4;
 }
 
+.hidden-overflow {
+    overflow: hidden;
+}
+
 body {
     font-family: ghostly;
     color: #959594;
@@ -57,7 +88,6 @@ body {
     background-position: center;
     max-width: 100vw;
     max-height: 100vh;
-    overflow: scroll;
     opacity: 1;
 }
 

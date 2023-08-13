@@ -4,34 +4,65 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- development version, includes helpful console warnings -->
+
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="map_sel.css">
         <title>Ghost Hunter's Guide</title>
     </head>
 
-    <body>
+    <body class='hidden-overflow eve-mode'>
         <div id="app" >
-
+            <div class="circle-container"  v-if="!mapSelected">
+                <div class="modal-cover"></div>
+                <h4 class="modal-title">
+                    <!-- <i class="Three-d left-lighted downwards equilateral arrowhead"></i> -->
+                    <div class="modal-title">
+                        <p @click="rotateModal()">&#11160;</p>
+                        <p>Map Selection</p>
+                        <p @click="rotateModal()">&#11162;</p>
+                    </div>
+                    <p class="down-arrow">&#11163;</p>
+                </h4>
+                <div class="rotate-slider">
+                    <ul class="slides">
+                      <li v-for="map in mapOptions"  :class="map.name" @click="setBodyClass(map.name)">
+                        <div class="inner">
+                          <h2>{{map.name.replace('-', '\n')}}</h2>
+                        </div>
+                      </li>
+                    </ul>
+                    </div>
+                    <svg>
+                        <defs>
+                            <clipPath id="slideClip">
+                            <path />
+                            </clipPath>
+                        </defs>
+                    </svg>
+            </div>
+<!-- 
             <div v-if="!mapSelected" class="map-selection-pop-up"> 
-                    <!--  only present if a map has not been selected -->
+
                     <div>
                         <div v-for="map in mapOptions" class="map-card">
                             <h4>{{map.name}}</h4>
                             <img v-bind:src="map.url" alt="" @click="setBodyClass(map.name)">
                         </div>
                     </div>
-                    <!-- <img src="images/map_images/map_board.PNG"></img>  -->
-            </div>
+            </div> -->
             
-            <h1 id="Page-head">Ghost Hunter's Guide</h1>
+            <h1 v-if="mapSelected" id="Page-head">Ghost Hunter's Guide</h1>
             <!-- Ghost list for calen to mess with -->
             <div v-if="mapSelected">
-                <div>
+                <!-- <div>
                     <label>Eve is Blind Mode</label>
 
                     <input onclick="document.body.classList.toggle('eve-mode')" type="checkbox">
-                </div>
+                </div> -->
                 
                 
                 <!-- Hard Evidence List -->
@@ -79,11 +110,11 @@
                     </div>
                     <div id="ghost-behavior">
                         <p>
-                        To test if it is <i><u>not</u></i> a Spirit, lower the sanity to below 50% and smudge the ghost while it's not hunting; if it hunts before the three minutes is up, it is not a Spirit.
+                            Spirits have no unique behavior and can easily be mistaken for another entity. Once the sanity average is below 50%, smudge the ghost while it is not hunting. If it hunts within the next three minutes, it is <i><u>not</u></i> a Spirit.
                         </p>
                         <div id="ghost-tip">
                             <p>
-                            <b>Note:</b> Spirits have no unique behavior and can easily be mistaken for another entity.
+                                <b>Note:</b> <i>Due to the Spirit's generic behavior, it's easily mistaken for other ghost types.</i>
                             </p>
                         </div>
                         <div id="nightmare-tip">
@@ -112,16 +143,18 @@
                         </p>
                     </div>
                     <div id="ghost-behavior">
-                        <p>
-                            To test if it is a Poltergeist, one can scatter items in small piles around the ghost room. If an object is flung with force, or multiple objects are thrown, it is likely a Poltergeist.
-                        </p>
+                        <div id="ghost-strat">
+                            <p>
+                                To test if it is a Poltergeist, one can scatter items in small piles around the ghost room. If an object is flung with force, or multiple objects are thrown, it is likely a Poltergeist.
+                            </p>
+                        </div>
                         <div id="ghost-tip">
                             <p>
                             <b>Note:</b> There is some overlap of how frequently other ghost types can throw items, this trait may be harder to discern in small rooms.
                             </p>
                         </div>
                         <div id="nightmare-tip">
-                            <b>Nightmare Tip:</b> <i>None Required.</i>
+                            <b>Nightmare Tip:</b> <i>No extra information at this time.</i>
                         </div>
                     </div>
                 </li>
@@ -656,9 +689,10 @@
         </div>
         <div class="footer">
             <i class="fa fa-github" style="font-size:36px"></i>
-            <h2 href="https://github.com/Calen-Ray/Ghost-hunters-assistant">GitHub repo</h2>
+            <a  href="https://github.com/Calen-Ray/Ghost-hunters-assistant"><h2>GitHub repo</h2></a>
             <p>Designed by: Evella, Rose, and Calen</p>
         </div>
     </body>
     <script src="app.js"></script>
+    <script src="modal_logic.js"></script>
 </html>

@@ -8,6 +8,7 @@ let app = new Vue({
         ],
         hardEvidence: [],
         mapSelected : false,
+        currentRotation : 0,
         mapPicked : '',
         mapOptions: [
             {'name' : 'Tanglewood-Drive', 'url' : 'images/location_images/tanglewood_drive.PNG'},
@@ -139,6 +140,12 @@ let app = new Vue({
     setBodyClass: function (mapName) {
         this.mapSelected = mapName;
         document.body.classList.add(mapName)
+        document.body.classList.remove('hidden-overflow')
+    }, // end of body-class
+
+    rotateModal: function () {
+        this.currentRotation = this.currentRotation - 360 / document.querySelectorAll('.rotate-slider .slides li').length;
+        document.querySelector('.rotate-slider .slides').style['transform'] = 'translateX(-50%) rotate('+this.currentRotation+'deg)'
     }, // end of body-class
 
     },// end methods
