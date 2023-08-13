@@ -10,11 +10,22 @@
     </head>
 
     <body>
-        <div id="app">
+        <div id="app" >
+
+            <div v-if="!mapSelected" class="map-selection-pop-up"> 
+                    <!--  only present if a map has not been selected -->
+                    <div>
+                        <div v-for="map in mapOptions" class="map-card">
+                            <h4>{{map.name}}</h4>
+                            <img v-bind:src="map.url" alt="" @click="setBodyClass(map.name)">
+                        </div>
+                    </div>
+                    <!-- <img src="images/map_images/map_board.PNG"></img>  -->
+            </div>
             
             <h1 id="Page-head">Ghost Hunter's Guide</h1>
             <!-- Ghost list for calen to mess with -->
-            <div>
+            <div v-if="mapSelected">
                 <div>
                     <label>Eve is Blind Mode</label>
 
@@ -41,7 +52,7 @@
                 </ul> -->
             </div>
             
-            <ul id="ghost-list">
+            <ul id="ghost-list" v-if="mapSelected">
                 <li>
                     <H3>Spirit</H3>
                     <journal-entry>

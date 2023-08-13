@@ -7,6 +7,24 @@ let app = new Vue({
 
         ],
         hardEvidence: [],
+        mapSelected : false,
+        mapPicked : '',
+        mapOptions: [
+            {'name' : 'Tanglewood-Drive', 'url' : 'images/location_images/tanglewood_drive.PNG'},
+            {'name' : 'Ridgeview-Court', 'url' : 'images/location_images/ridgeview_court.PNG'},
+            {'name' : 'Willow-Street', 'url' : 'images/location_images/willow_street.PNG'},
+            {'name' : 'Edgefield-Road', 'url' : 'images/location_images/edgefield_road.PNG'},
+            {'name' : 'Bleasdale-Farmhouse', 'url' : 'images/location_images/bleasdale_farmhouse.PNG'},
+            {'name' : 'Camp-Woodwind', 'url' : 'images/location_images/camp_woodwind.PNG'},
+            {'name' : 'Grafton-Farmhouse', 'url' : 'images/location_images/grafton_farmhouse.PNG'},
+            {'name' : 'Sunny-Meadows-Mental-Institution', 'url' : 'images/location_images/sunny_meadows.PNG'},
+            {'name' : 'Brownstone-High-School', 'url' : 'images/location_images/brownstone_highschool.PNG'},
+            {'name' : 'Maple-Lodge-Campsite', 'url' : 'images/location_images/large_campsite.PNG'},
+            {'name' : 'Prison', 'url' : 'images/location_images/prison_door.PNG'},
+            // {'name' : 'Sunny-Meadows-Mental-Institution', 'url' : ''},
+            // {'name' : 'Removed-Maps', 'url' : ''},
+            // {'name' : 'Asylum', 'url' : ''},
+        ]
     },
     methods: {
 
@@ -117,6 +135,11 @@ let app = new Vue({
             } 
         }) // end of evidence class modification
     }, // end clickEvidence ghosts 
+
+    setBodyClass: function (mapName) {
+        this.mapSelected = mapName;
+        document.body.classList.add(mapName)
+    }, // end of body-class
 
     },// end methods
     created: function () {
