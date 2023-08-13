@@ -10,6 +10,8 @@
 
 #app {
     display: grid;
+    /* overflow: scroll; */
+    background-color: rgba(0, 0, 0, 0.753);
 }
 
 h1 {
@@ -27,6 +29,14 @@ body {
     /* background-color: white; */
     background-color: black;
     font-size: 1.25rem;
+    background-image: url('images/location_images/tanglewood_drive.PNG');
+    background-size: inherit;
+    background-repeat: no-repeat;
+    background-position: center;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: scroll;
+    opacity: 1;
 }
 
 #ghost-list li {
