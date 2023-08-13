@@ -76,6 +76,10 @@ body {
       10px 0 80px rgba(0, 255, 255,0.1);
 }
 
+#ghost-list .excluded{
+    display: none;
+}
+
 journal-entry {
     font-style: italic;
 }
