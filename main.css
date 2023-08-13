@@ -101,3 +101,7 @@ ul.evidence-list {
     flex-direction: column;
     text-align: left;
 }
+
+.eve-mode {
+    color: aliceblue !important;
+}
