@@ -84,12 +84,13 @@ body {
     background-color: black;
     font-size: 1.25rem;
 
-    background-size: inherit;
-    background-repeat: no-repeat;
     background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     max-width: 100vw;
     max-height: 100vh;
     opacity: 1;
+    background-size: cover;
 }
 
 #ghost-list li {
