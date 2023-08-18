@@ -32,6 +32,7 @@
                       <li v-for="map in mapOptions"  :class="map.name" @click="setBodyClass(map.name)">
                         <div class="inner">
                           <h2>{{map.name.replace('-', '\n')}}</h2>
+                          <p>{{map.descriptive}}</p>
                         </div>
                       </li>
                     </ul>

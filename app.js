@@ -11,17 +11,17 @@ let app = new Vue({
         currentRotation : 0,
         mapPicked : '',
         mapOptions: [
-            {'name' : 'Tanglewood-Drive', 'url' : 'images/location_images/tanglewood_drive.PNG'},
-            {'name' : 'Ridgeview-Court', 'url' : 'images/location_images/ridgeview_court.PNG'},
-            {'name' : 'Willow-Street', 'url' : 'images/location_images/willow_street.PNG'},
-            {'name' : 'Edgefield-Road', 'url' : 'images/location_images/edgefield_road.PNG'},
-            {'name' : 'Bleasdale-Farmhouse', 'url' : 'images/location_images/bleasdale_farmhouse.PNG'},
-            {'name' : 'Camp-Woodwind', 'url' : 'images/location_images/camp_woodwind.PNG'},
-            {'name' : 'Grafton-Farmhouse', 'url' : 'images/location_images/grafton_farmhouse.PNG'},
-            {'name' : 'Sunny-Meadows-Mental-Institution', 'url' : 'images/location_images/sunny_meadows.PNG'},
-            {'name' : 'Brownstone-High-School', 'url' : 'images/location_images/brownstone_highschool.PNG'},
-            {'name' : 'Maple-Lodge-Campsite', 'url' : 'images/location_images/large_campsite.PNG'},
-            {'name' : 'Prison', 'url' : 'images/location_images/prison_door.PNG'},
+            {'name' : 'Tanglewood-Drive', 'url' : 'images/location_images/tanglewood_drive.PNG', 'descriptive': '„Where it all began; our first reports of the paranormal came from here. It\'s only small, but it holds more secrets than meets the eye.”'},
+            {'name' : 'Ridgeview-Court', 'url' : 'images/location_images/ridgeview_court.PNG', 'descriptive': '„This building has a real history of death. Who sold the building to claim its next victims?”'},
+            {'name' : 'Willow-Street', 'url' : 'images/location_images/willow_street.PNG', 'descriptive': '„A newly built home in an established area. Reports say it was built on top of something unearthly.”'},
+            {'name' : 'Edgefield-Road', 'url' : 'images/location_images/edgefield_road.PNG', 'descriptive': '„This cozy house turned into something much more than a home for the living.”'},
+            {'name' : 'Bleasdale-Farmhouse', 'url' : 'images/location_images/bleasdale_farmhouse.PNG', 'descriptive': '„A beautiful traditional house in the woods. It\'s a shame nobody was around to hear the residents running for their lives.”'},
+            {'name' : 'Camp-Woodwind', 'url' : 'images/location_images/camp_woodwind.PNG', 'descriptive': '„This outdoor retreat was evacuated due to some campfire stories coming to life.”'},
+            {'name' : 'Grafton-Farmhouse', 'url' : 'images/location_images/grafton_farmhouse.PNG', 'descriptive': '„A long-abandoned farmhouse, located in the middle of nowhere. Who knows what still lurks within.”'},
+            {'name' : 'Sunny-Meadows-Mental-Institution', 'url' : 'images/location_images/sunny_meadows.PNG', 'descriptive': '„This vast asylum holds more than just cobwebs and debris. Some say you can still hear the screams.”'},
+            {'name' : 'Brownstone-High-School', 'url' : 'images/location_images/brownstone_highschool.PNG', 'descriptive': '„Shut down due to unnatural deaths, this isolated school has been abandoned for decades.”'},
+            {'name' : 'Maple-Lodge-Campsite', 'url' : 'images/location_images/large_campsite.PNG', 'descriptive': '„This outdoor retreat was evacuated due to some campfire stories coming to life.”'},
+            {'name' : 'Prison', 'url' : 'images/location_images/prison_door.PNG', 'descriptive': '„Recently closed due to some unexplainable deaths, this facility now imprisons the paranormal.”'},
             // {'name' : 'Sunny-Meadows-Mental-Institution', 'url' : ''},
             // {'name' : 'Removed-Maps', 'url' : ''},
             // {'name' : 'Asylum', 'url' : ''},
@@ -144,7 +144,26 @@ let app = new Vue({
     }, // end of body-class
 
     rotateModal: function () {
+        console.log(this.currentRotation)
         this.currentRotation = this.currentRotation - 360 / document.querySelectorAll('.rotate-slider .slides li').length;
+        console.log(this.currentRotation)
+        document.querySelector('.rotate-slider .slides').style['transform'] = 'translateX(-50%) rotate('+this.currentRotation+'deg)'
+    }, // end of body-class
+
+    forceScrollToTop: function () {
+        setTimeout(window.scrollTo(0, 0), 1500)
+        setTimeout(window.scrollTo(0, 0), 3000)
+        setTimeout(window.scrollTo(0, 0), 8000)
+    }, // end of body-class
+
+    scrollModalFeature: function () {
+        $(document).bind('mousewheel', function(e) {
+            var delta = e.originalEvent.wheelDelta;
+
+            console.log('The mouse delta is : ' + delta);
+        });
+        this.currentRotation = this.currentRotation - 360 / document.querySelectorAll('.rotate-slider .slides li').length;
+        console.log(this.currentRotation)
         document.querySelector('.rotate-slider .slides').style['transform'] = 'translateX(-50%) rotate('+this.currentRotation+'deg)'
     }, // end of body-class
 
@@ -152,6 +171,6 @@ let app = new Vue({
     created: function () {
         this.loadGhosts()
         this.loadHardEvidence()
-
+        this.scrollModalFeature()
     }//end created
 });
