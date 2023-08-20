@@ -10,6 +10,7 @@ let app = new Vue({
         mapSelected : false,
         currentRotation : 0,
         mapPicked : '',
+        topMap : '',
         mapOptions: [
             {'name' : 'Tanglewood-Drive', 'url' : 'images/location_images/tanglewood_drive.PNG', 'descriptive': '„Where it all began; our first reports of the paranormal came from here. It\'s only small, but it holds more secrets than meets the eye.”'},
             {'name' : 'Ridgeview-Court', 'url' : 'images/location_images/ridgeview_court.PNG', 'descriptive': '„This building has a real history of death. Who sold the building to claim its next victims?”'},
@@ -148,12 +149,11 @@ let app = new Vue({
         this.currentRotation = this.currentRotation - 360 / document.querySelectorAll('.rotate-slider .slides li').length;
         console.log(this.currentRotation)
         document.querySelector('.rotate-slider .slides').style['transform'] = 'translateX(-50%) rotate('+this.currentRotation+'deg)'
+        this.isSelected()
     }, // end of body-class
 
     forceScrollToTop: function () {
-        setTimeout(window.scrollTo(0, 0), 1500)
-        setTimeout(window.scrollTo(0, 0), 3000)
-        setTimeout(window.scrollTo(0, 0), 8000)
+        window.scrollTo(0, 0)
     }, // end of body-class
 
     scrollModalFeature: function () {
@@ -168,12 +168,55 @@ let app = new Vue({
         this.currentRotation = this.currentRotation + 360 / document.querySelectorAll('.rotate-slider .slides li').length;
         console.log(this.currentRotation)
         document.querySelector('.rotate-slider .slides').style['transform'] = 'translateX(-50%) rotate('+this.currentRotation+'deg)'
+        this.isSelected()
     }, // end of body-class
+
+
+    labelModalParts: function () {
+        console.log('Forcing attributes to slides')
+        slides = document.querySelectorAll('.rotate-slider .slides li')
+        loop = 0
+        chunkCount = 360 / document.querySelectorAll('.rotate-slider .slides li').length
+        slides.forEach(ele => {
+            ele.setAttribute('rotationValue', chunkCount*loop)
+            loop = loop + 1
+        })
+        this.isSelected()
+    }, // end of body-class
+
+    isSelected: function () {
+        slides = document.querySelectorAll('.rotate-slider .slides li')
+        slides.forEach(ele => {ele.classList.remove('selected-map')})
+        convertedRotation = Math.floor(Math.abs(this.currentRotation)) % 360
+        slides.forEach(ele => {
+            // console.log(Math.floor(ele.getAttribute('rotationValue')))
+            // console.log('vs')
+            // console.log(convertedRotation)
+            if (Math.floor(ele.getAttribute('rotationValue')) == convertedRotation) {
+                console.log('new map selected -> '+ ele.classList)
+                this.topMap = ele
+                ele.classList.add('selected-map')
+            }
+        })
+    }, // end of isselected
 
     },// end methods
     created: function () {
         this.loadGhosts()
         this.loadHardEvidence()
+        window.setTimeout(this.labelModalParts, 500)
+        window.setTimeout(this.forceScrollToTop, 100)
         // this.scrollModalFeature()
-    }//end created
+    },//end created
+    computed: {
+        // a computed getter
+        // isSelected: function () {
+        //     slides = document.querySelectorAll('.rotate-slider .slides li')
+        //     slides.forEach(ele => {
+        //         if (ele.rotationValue == this.currentRotation) {
+        //             this.topMap = ele
+        //         }
+        //     })
+        // }
+      } // emd of computed
 });

@@ -29,10 +29,11 @@
                 </h4>
                 <div class="rotate-slider">
                     <ul class="slides animate">
-                      <li v-for="map in mapOptions"  :class="map.name" @click="setBodyClass(map.name)">
+                      <li v-for="map in mapOptions" :class="map.name" @click="setBodyClass(map.name)">
                         <div class="inner">
                           <h2>{{map.name.replace('-', '\n')}}</h2>
-                          <p>{{map.descriptive}}</p>
+                          <p v-if="String(topMap.classList).split(' ')[0] == map.name">{{map.descriptive}}</p>
+                          <!-- <p>{{topMap.classList == map.name}}</p> -->
                         </div>
                       </li>
                     </ul>

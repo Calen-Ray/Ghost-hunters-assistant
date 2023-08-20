@@ -42,6 +42,10 @@
     transform-origin: bottom center;
     width: 100%;
 }
+
+.selected-map {
+    box-shadow: inset -1px -20px 20px 20px rgb(0 255 253 / 33%), 0 6px 20px 0 rgb(54 0 255 / 19%);
+}
 /* .rotate-slider ul.slides li:nth-of-type(1){background: #3498db;}
 .rotate-slider ul.slides li:nth-of-type(2){background: url('http://static.pexels.com/wp-content/uploads/2014/05/car-oldtimer-snow-342-825x550.jpg');}
 .rotate-slider ul.slides li:nth-of-type(3){background: #e74c3c;}
