@@ -194,9 +194,9 @@ let app = new Vue({
         slides.forEach(ele => {ele.classList.remove('selected-map')})
         convertedRotation = Math.floor(Math.abs(this.currentRotation)) % 360
         slides.forEach(ele => {
-            // console.log(Math.floor(ele.getAttribute('rotationValue')))
-            // console.log('vs')
-            // console.log(convertedRotation)
+            console.log(Math.floor(ele.getAttribute('rotationValue')))
+            console.log('vs')
+            console.log(convertedRotation)
             if (Math.floor(ele.getAttribute('rotationValue')) == convertedRotation) {
                 console.log('new map selected -> '+ ele.classList)
                 this.topMap = ele
