@@ -59,7 +59,25 @@
             
             <h1 v-if="mapSelected" id="Page-head">Ghost Hunter's Guide</h1>
             <!-- Ghost list for calen to mess with -->
-            <div v-if="mapSelected">
+            <div class="side-bar" v-if="mapSelected">
+                <div id="show-options">
+                    
+                    <input type="checkbox" id="showJournal" v-model="showJournal">
+                    <label for="showJournal">{{ checked }} show Journal</label>
+                    
+                    <input type="checkbox" id="showStrengthweakness" v-model="showStrengthweakness">
+                    <label for="showStrengthweakness">{{ checked }} show Strength & Weakness</label>
+                    
+                    <input type="checkbox" id="showGhostBehavior" v-model="showGhostBehavior">
+                    <label for="showGhostBehavior">{{ checked }} show Ghost Behavior</label>
+                    
+                    <input class="indent-me-daddy" type="checkbox" id="showNightmareTip" v-model="showNightmareTip" v-if="showGhostBehavior">
+                    <label class="indent-me-daddy" for="showNightmareTip" v-if="showGhostBehavior">{{ checked }} show Nightmare Tip</label>
+                    
+                    <input class="indent-me-daddy" type="checkbox" id="showGhostTip" v-model="showGhostTip" v-if="showGhostBehavior">
+                    <label class="indent-me-daddy" for="showGhostTip" v-if="showGhostBehavior">{{ checked }} show Ghost Tip</label>
+                </div>
+
                 <!-- <div>
                     <label>Eve is Blind Mode</label>
 
@@ -89,12 +107,12 @@
             <ul id="ghost-list" v-if="mapSelected">
                 <li>
                     <H3>Spirit</H3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal" v-if="showJournal">
                         <p>
-                        Spirits are very common ghosts. They are very powerful, but passive, only attacking when they need to.
+                            Spirits are very common ghosts. They are very powerful, but passive, only attacking when they need to.
                         </p>
                         <p>
-                        They defend their place of death to the utmost degree, killing anyone that is caught overstaying their welcome.
+                            They defend their place of death to the utmost degree, killing anyone that is caught overstaying their welcome.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -102,33 +120,33 @@
                         <li>Spirit Box</li>
                         <li>Ghost Writing</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> Spirits have no outstanding strengths.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> A Spirit can be temporarily stopped by burning Smudge Sticks near them.
+                            <b>Strength:</b> Spirits have no outstanding strengths.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> A Spirit can be temporarily stopped by burning Smudge Sticks near them.
                         </p>
                     </div>
-                    <div id="ghost-behavior">
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
                         <p>
                             Spirits have no unique behavior and can easily be mistaken for another entity. Once the sanity average is below 50%, smudge the ghost while it is not hunting. If it hunts within the next three minutes, it is <i><u>not</u></i> a Spirit.
                         </p>
-                        <div id="ghost-tip">
+                        <div id="ghost-tip" v-if="showGhostTip">
                             <p>
                                 <b>Note:</b> <i>Due to the Spirit's generic behavior, it's easily mistaken for other ghost types.</i>
                             </p>
                         </div>
-                        <div id="nightmare-tip">
+                        <div id="nightmare-tip" v-if="showNightmareTip">
                             <b>Nightmare Tip:</b> Players should wait for a hunt or a burnt crucifix to confirm that the average sanity is low enough.
                         </div>
                     </div>
                 </li>
                 <li>
                     <h3>Poltergeist</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                         <p>    
-                        One of the most famous ghosts, the Poltergeist. Known to manipulate objects around it to spread fear into its victims.
+                            One of the most famous ghosts, the Poltergeist. Known to manipulate objects around it to spread fear into its victims.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -136,15 +154,15 @@
                             <li>Fingerprints</li>
                             <li>Ghost Writing</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> Poltergeist can throw multiple objects at once, and with great force.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> With nothing to throw, Poltergeists become powerless.
+                            <b>Strength:</b> Poltergeist can throw multiple objects at once, and with great force.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> With nothing to throw, Poltergeists become powerless.
                         </p>
                     </div>
-                    <div id="ghost-behavior">
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
                         <div id="ghost-strat">
                             <p>
                                 Poltergiests will occasionally throw an item with the "force" EMF value of 2-6 instead of the average 1-3. They have the ability to throw multiple items at once, decreasing the sanity of all nearby players in line-of-sight by a percentage equal to the number of items thrown, multiplied by 2. When hunting, a Poltergeist will throw an item every half a second.
@@ -153,21 +171,21 @@
                                 Scatter items in small piles around the ghost room. If an object is flung with force, or multiple objects are thrown, it may be a Poltergeist.
                             </p>
                         </div>
-                        <div id="ghost-tip">
+                        <div id="ghost-tip" v-if="showGhostTip">
                             <p>
-                            <b>Note:</b> There is some overlap of how frequently other ghost types can throw items, this trait may be harder to discern in small rooms.
+                                <b>Note:</b> There is some overlap of how frequently other ghost types can throw items, this trait may be harder to discern in small rooms.
                             </p>
                         </div>
-                        <div id="nightmare-tip">
+                        <div id="nightmare-tip" v-if="showNightmareTip">
                             <b>Nightmare Tip:</b> <i>No additional information at this time.</i>
                         </div>
                     </div>
                 </li>
                 <li>
                     <h3>Mare</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                         <p>    
-                        A Mare is the source of all nightmares, making it most powerful in the dark.
+                            A Mare is the source of all nightmares, making it most powerful in the dark.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -175,33 +193,33 @@
                         <li>Ghost Orb</li>
                         <li>Ghost Writing</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> A Mare will have an increased chance to attack in the dark.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> Turning the lights on around the Mare will lower its chance to attack.
+                            <b>Strength:</b> A Mare will have an increased chance to attack in the dark.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> Turning the lights on around the Mare will lower its chance to attack.
                         </p>
                     </div>
-                    <div id="ghost-behavior">
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
                         <p>
                             Mares cannot turn lights on, and are more likely to turn the lights off as an interaction, or perform light-shattering events. If a light, TV, or computer is activated within 4 metres of the Mare, it might promptly switch off. This has a minimum 10-second cooldown between interactions. Finally, when a Mare roams, it is more likely to choose an unlit room. 
                         </p>
-                        <div id="ghost-tip">
+                        <div id="ghost-tip" v-if="showGhostTip">
                             <p>
                                 <b>Note:</b> If the lights are off, the hunt sanity threshold is 60%, if the lights are on, it is decreased to 40%. Other sources of light, such as brought-in equipment and candles, do not affect this threshold.
                             </p>
                         </div>
-                        <div id="nightmare-tip">
+                        <div id="nightmare-tip" v-if="showNightmareTip">
                             <b>Nightmare Tip:</b> If the lights near the ghost are consistently on, and it frequently changes its favorite room to a dark area, it could be a Mare.
                         </div>
                     </div>
                 </li>
                 <li>
                     <h3>Demon</h3>
-                        <journal-entry>
+                        <journal-entry v-if="showJournal">
                             <p>
-                            A Demon is one of the worst ghosts you can encounter. It has been known to attack without reason.
+                                A Demon is one of the worst ghosts you can encounter. It has been known to attack without reason.
                             </p>
                         </journal-entry>
                         <ul id='three-evidence'>
@@ -209,34 +227,36 @@
                             <li>Ghost Writing</li>
                             <li>Freezing Temps</li>
                         </ul>
-                        <div id="str-and-weak">
+                        <div id="str-and-weak" v-if="showStrengthweakness">
                             <p>
-                            <b>Strength:</b> Demons will initiate hunts more often than other ghosts.
-                            <br>
-                            <br>
-                            <b>Weakness:</b> Demons fear the Crucifix and will be less aggressive near one.
+                                <b>Strength:</b> Demons will initiate hunts more often than other ghosts.
+                                <br>
+                                <br>
+                                <b>Weakness:</b> Demons fear the Crucifix and will be less aggressive near one.
                             </p>
-                        <div id="ghost-behavior">
+                        </div>
+                        <div id="ghost-behavior" v-if="showGhostBehavior">
                             <p>
                                 Demons are aggressive: With a hunt sanity threshold at 70% and a minimum cooldown of 20 seconds (down from 25), demons also possess a 60% larger interaction range. Smudging stops hunts for 60 seconds (from 90), but as a weakness, the crucifix range is increased by 60%.
                             </p>
-                            <p>The Demon has an ability that allows it to automatically start a hunt, regardless of current average sanity. This hunt can be blocked by normal prevention methods.</p>
-                            <div id="ghost-tip">
                             <p>
-                            <b>Note:</b> On smaller maps, it is possible to see activity in multiple rooms due to the Demon's larger interaction range.
+                                The Demon has an ability that allows it to automatically start a hunt, regardless of current average sanity. This hunt can be blocked by normal prevention methods.
+                            </p>
+                            <div id="ghost-tip" v-if="showGhostTip">
+                            <p>
+                                <b>Note:</b> On smaller maps, it is possible to see activity in multiple rooms due to the Demon's larger interaction range.
                             </p>
                             </div>
-                            <div id="nightmare-tip">
-                            <b>Nightmare Tip:</b> <i>No additional information at this time.</i>
-                            </div>
+                            <div id="nightmare-tip" v-if="showNightmareTip">
+                                <b>Nightmare Tip:</b> <i>No additional information at this time.</i>
                             </div>
                         </div>
                 </li>
                 <li>
                     <h3>Yokai</h3>
-                        <journal-entry>
+                        <journal-entry v-if="showJournal">
                             <p>
-                            Yokai are common ghosts that are attracted to human voices. They can usually be found haunting family homes.
+                                Yokai are common ghosts that are attracted to human voices. They can usually be found haunting family homes.
                             </p>
                         </journal-entry>
                         <ul id='three-evidence'>
@@ -244,31 +264,31 @@
                             <li>Ghost Orb</li>
                             <li>D.O.T.S Projector</li>
                         </ul>
-                        <div id="str-and-weak">
+                        <div id="str-and-weak" v-if="showStrengthweakness">
                             <p>
-                            <b>Strength:</b> Talking near a Yokai will anger it, increasing the chance of an attack.
-                            <br>
-                            <br>
-                            <b>Weakness:</b> When hunting, a Yokai can only hear voices close to it.
+                                <b>Strength:</b> Talking near a Yokai will anger it, increasing the chance of an attack.
+                                <br>
+                                <br>
+                                <b>Weakness:</b> When hunting, a Yokai can only hear voices close to it.
                             </p>
                         </div>
-                        <div id="ghost-behavior">
-                            <p>
-                                Yokai become more likely to hunt and interact when they hear voices nearby, their hunt sanity threshold will spike to 80%. The Yokai's other notable trait is their limited ability to detect hidden players during a hunt: Yokai can only hear voices and active electronics within 2.5 metres, they are less likely to chase a player if they continously lose track of them, and will not be attracted to electronics unless the Yokai was already near a player. For Yokai, the electronic disruption range is greater than the ghost's ability to sense. 
-                            </p>
-                        <div id="ghost-tip">
-                            <p>
-                                <b>Note:</b> If a player uses the Monkey Paw's wish to unblock a hiding spot the ghost is able to hear speech and electronics of the player who used it from any distance, overriding the Yokai's usual weakness. 
-                            </p>
+                        <div id="ghost-behavior" v-if="showGhostBehavior">
+                                <p>
+                                    Yokai become more likely to hunt and interact when they hear voices nearby, their hunt sanity threshold will spike to 80%. The Yokai's other notable trait is their limited ability to detect hidden players during a hunt: Yokai can only hear voices and active electronics within 2.5 metres, they are less likely to chase a player if they continously lose track of them, and will not be attracted to electronics unless the Yokai was already near a player. For Yokai, the electronic disruption range is greater than the ghost's ability to sense. 
+                                </p>
+                            <div id="ghost-tip" v-if="showGhostTip">
+                                <p>
+                                    <b>Note:</b> If a player uses the Monkey Paw's wish to unblock a hiding spot the ghost is able to hear speech and electronics of the player who used it from any distance, overriding the Yokai's usual weakness. 
+                                </p>
+                            </div>
+                            <div id="nightmare-tip" v-if="showNightmareTip">
+                                <b>Nightmare Tip:</b> <i>No additional information at this</i>
+                            </div>
                         </div>
-                        <div id="nightmare-tip">
-                            <b>Nightmare Tip:</b> <i>No additional information at this</i>
-                        </div>
-                    </div>
                 </li>
                 <li>
                     <h3>Myling</h3>
-                        <journal-entry>
+                        <journal-entry v-if="showJournal">
                             <p>
                             A Myling is a very vocal and active ghost. They are rumoured to be quiet when hunting their prey.
                             </p>
@@ -278,7 +298,7 @@
                             <li>Fingerprints</li>
                             <li>Ghost Writing</li>
                         </ul>
-                        <div id="str-and-weak">
+                        <div id="str-and-weak" v-if="showStrengthweakness">
                             <p>
                             <b>Strength:</b> A Myling is known to be quieter when hunting.
                             <br>
@@ -286,31 +306,31 @@
                             <b>Weakness:</b> Mylings make more frequent paranormal sounds.
                             </p>
                         </div>
-                        <div id="ghost-behavior">
+                        <div id="ghost-behavior" v-if="showGhostBehavior">
                             <p>
                                 Myling will produce paranormal sounds (voices, growls, etc), heard through the Parabolic Microphone, more frequently than other ghosts, but will be very quiet when hunting. Their footsteps and vocalization will only be audible within a range only slightly greater than the range for electronic interference. (12 instead of the usual 20 metres). Its footsteps will begin as muffled, but become discernible as the Myling gets closer.
                             </p>
                             <p>
                                 If the ghost is only audible when electrical equipment starts flickering and it’s on the same floor, it is probably a Myling. However, this test is not guaranteed. 
                             </p>
-                        <div id="ghost-tip">
+                        <div id="ghost-tip" v-if="showGhostTip">
                             <p>
                                 <b>Note:</b> There may occasionally be a bug where the ghost temporarily does not flicker electronics on the proper floor when changing stories. Footsteps may be heard before the electronics flicker depending on your audio setup.
                             </p>
                         </div>
-                        <div id="nightmare-tip">
+                        <div id="nightmare-tip" v-if="showNightmareTip">
                             <b>Nightmare Tip:</b> <i>No additional information at this</i>
                         </div>
                     </div>
                 </li>
                 <li>
                     <h3>Raiju</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                             <p>
-                            A Raiju is a demon that thrives on electrical current.
+                                A Raiju is a demon that thrives on electrical current.
                             </p>
                             <p>
-                            While generally calm, they can become agitated when overwhelmed with power.      
+                                While generally calm, they can become agitated when overwhelmed with power.      
                             </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -318,7 +338,7 @@
                             <li>Ghost Orb</li>
                             <li>D.O.T.S Projector</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
                         <b>Strength:</b> A Raiju can siphon power from nearby electrical devices, making it move faster.
                         <br>
@@ -329,9 +349,9 @@
                 </li>
                 <li>
                     <h3>Moroi</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                         <p>
-                        Moroi have risen from the grave to drain energy from the living.
+                            Moroi have risen from the grave to drain energy from the living.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -339,91 +359,91 @@
                         <li>Ghost Writing</li>
                         <li>Freezing Temps</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> The weaker their victims, the stronger the Moroi becomes.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> Moroi suffer from hyperosmia, weakening them for longer periods.
+                            <b>Strength:</b> The weaker their victims, the stronger the Moroi becomes.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> Moroi suffer from hyperosmia, weakening them for longer periods.
                         </p>
                     </div>
                 </li>
                 <li>
                     <h3>Wraith</h3>
-                    <journal-entry>
-                    <p>
-                    Wraiths are one of the most dangerous ghosts you will find.
-                    </p>
-                    <p>
-                    It is also the only known ghost that has the ability of flight and has sometimes been known to travel through walls.
-                    </p>
+                    <journal-entry v-if="showJournal">
+                        <p>
+                            Wraiths are one of the most dangerous ghosts you will find.
+                        </p>
+                        <p>
+                            It is also the only known ghost that has the ability of flight and has sometimes been known to travel through walls.
+                        </p>
                     </journal-entry>
                     <ul id='three-evidence'>
                         <li>EMF 5</li>
                         <li>Spirit Box</li>
                         <li>D.O.T.S Projector</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> Wraiths almost never touch the ground, meaning it can't be tracked by footsteps.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> Wraiths are afraid of Salt and will actively avoid it.
+                            <b>Strength:</b> Wraiths almost never touch the ground, meaning it can't be tracked by footsteps.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> Wraiths are afraid of Salt and will actively avoid it.
                         </p>
                     </div>
                 </li>
                 <li>
                     <h3>Banshee</h3>
-                    <journal-entry>
-                    <p>    
-                    The singing siren, known for attracting its victims through song.
-                    </p>
-                    <p>
-                    It has been known to single out its prey before making a killing blow.
-                    </p>
+                    <journal-entry v-if="showJournal">
+                        <p>    
+                            The singing siren, known for attracting its victims through song.
+                        </p>
+                        <p>
+                            It has been known to single out its prey before making a killing blow.
+                        </p>
                     </journal-entry>
                     <ul id='three-evidence'>
                         <li>Fingerprints</li>
                         <li>Ghost Orb</li>
                         <li>D.O.T.S Projector</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> Banshees will weaken their target before striking.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> Banshees can sometimes be heard screaming with a parabolic microphone.
+                            <b>Strength:</b> Banshees will weaken their target before striking.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> Banshees can sometimes be heard screaming with a parabolic microphone.
                         </p>
                     </div>
                 </li>
                 <li>
                     <h3>Revenant</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                     <p>
-                    A Revenant is a violent ghost that will attack indiscriminately.
+                        A Revenant is a violent ghost that will attack indiscriminately.
                     </p>
                     <p>
-                    Their speed can be deceiving, <br>as they are slow while dormant; however, as soon as they hunt they can move incredibly fast.</br>
+                        Their speed can be deceiving, <br>as they are slow while dormant; however, as soon as they hunt they can move incredibly fast.</br>
                     </p></journal-entry>
                     <ul id='three-evidence'>
                         <li>Ghost Orb</li>
                         <li>Ghost Writing</li>
                         <li>Freezing Temps</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> A Revenant will travel at a significantly faster speed when hunting their prey.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> Hiding from the Revenant will cause it to move very slowly.
+                            <b>Strength:</b> A Revenant will travel at a significantly faster speed when hunting their prey.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> Hiding from the Revenant will cause it to move very slowly.
                         </p>
                     </div>
                 </li>
                 <li>
                     <h3>Yurei</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                         <p>
-                        A Yurei is a ghost that has returned to the physical world, usually for the purpose of revenge or hatred.
+                            A Yurei is a ghost that has returned to the physical world, usually for the purpose of revenge or hatred.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -431,21 +451,21 @@
                         <li>Freezing Temps</li>
                         <li>D.O.T.S Projector</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> Yureis have been known to have a stronger effect on people sanity.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> Smudging the Yurei's place of death will trap it temporarily, reducing how much it wanders.
+                            <b>Strength:</b> Yureis have been known to have a stronger effect on people sanity.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> Smudging the Yurei's place of death will trap it temporarily, reducing how much it wanders.
                         </p>
                     </div>
                 </li>
                 <li>
                     <h3>Hantu</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                         <p>
-                        A Hantu is a rare ghost that thrives in the coldest climates. 
-                        The cold seems to make them more aggressive and empowered.
+                            A Hantu is a rare ghost that thrives in the coldest climates. 
+                            The cold seems to make them more aggressive and empowered.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -453,23 +473,23 @@
                         <li>Ghost Orb</li>
                         <li>Freezing Temps</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> Lower temperatures allow the Hantu to move at faster speeds.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> Hantus move slower in warmer areas.
+                            <b>Strength:</b> Lower temperatures allow the Hantu to move at faster speeds.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> Hantus move slower in warmer areas.
                         </p>
                     </div>
                 </li>
                 <li>
                     <h3>Onryo</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                         <p>
-                        The Onryo is often referred to as "The Wrathful Spirit". It steals souls from dying victims' bodies to seek revenge.
+                            The Onryo is often referred to as "The Wrathful Spirit". It steals souls from dying victims' bodies to seek revenge.
                         </p>
                         <p>
-                        This ghost has been known to fear any form of fire, and will do anything to be far from it.
+                            This ghost has been known to fear any form of fire, and will do anything to be far from it.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -477,23 +497,23 @@
                         <li>Ghost Orb</li>
                         <li>Freezing Temps</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> Extinguishing a flame can cause an Onryo to attack.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> When threatened, this ghost will be less likely to hunt.
+                            <b>Strength:</b> Extinguishing a flame can cause an Onryo to attack.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> When threatened, this ghost will be less likely to hunt.
                         </p>
                     </div>
                 </li>
                 <li>
                     <h3>Obake</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                         <p>
-                        Obake are terrifying shape-shifters, capable of taking on many forms. 
+                            Obake are terrifying shape-shifters, capable of taking on many forms. 
                         </p>
                         <p>
-                        They have been seen taking on humanoid shapes to attract their prey.
+                            They have been seen taking on humanoid shapes to attract their prey.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -501,7 +521,7 @@
                         <li>Fingerprints</li>
                         <li>Ghost Orb</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
                         <b>Strength:</b> When interacting with the environment, an Obake will rarely leave a trace.
                         <br>
@@ -512,12 +532,12 @@
                 </li>
                 <li>
                     <h3>Deogen</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                         <p>
-                        Sometimes surrounded by an endless fog, Deogen have been eluding ghost hunters for years. 
+                            Sometimes surrounded by an endless fog, Deogen have been eluding ghost hunters for years. 
                         </p>
                         <p>
-                        These ghosts have been reported to find even the most hidden prey, before stalking them into exhaustion.
+                            These ghosts have been reported to find even the most hidden prey, before stalking them into exhaustion.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -525,23 +545,23 @@
                         <li>Ghost Writing</li>
                         <li>D.O.T.S Projector</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> Deogens constantly sense the living. You can run but you can't hide.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> Deogens require a lot of energy to form and will move very slowly when approaching its victim.
+                            <b>Strength:</b> Deogens constantly sense the living. You can run but you can't hide.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> Deogens require a lot of energy to form and will move very slowly when approaching its victim.
                         </p>
                     </div>
                 </li>
                 <li>
                     <h3>Phantom</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                         <p>
-                        A Phantom is a ghost that can possess the living, inducing fear into those around it. 
+                            A Phantom is a ghost that can possess the living, inducing fear into those around it. 
                         </p>
                         <p>
-                        They are most commonly summoned from Ouija Boards.
+                            They are most commonly summoned from Ouija Boards.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -549,23 +569,23 @@
                         <li>Fingerprints</li>
                         <li>D.O.T.S Projector</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> Looking at a Phantom will drop your sanity considerably faster.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> Taking a photo of the Phantom will make it temporarily disappear.
+                            <b>Strength:</b> Looking at a Phantom will drop your sanity considerably faster.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> Taking a photo of the Phantom will make it temporarily disappear.
                         </p>
                     </div>
                 </li>
                 <li>
                     <h3>Jinn</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                         <p>
-                        A Jinn is a territorial ghost that will attack when threatened. 
+                            A Jinn is a territorial ghost that will attack when threatened. 
                         </p>
                         <p>
-                        It has also been known to be able to travel at significant speed.
+                            It has also been known to be able to travel at significant speed.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -573,23 +593,23 @@
                         <li>Fingerprints</li>
                         <li>Freezing Temps</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> A Jinn will travel at a faster speed if its victim is far away.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> Turning off the location's power source will prevent the Jinn from using its ability.
+                            <b>Strength:</b> A Jinn will travel at a faster speed if its victim is far away.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> Turning off the location's power source will prevent the Jinn from using its ability.
                         </p>
                     </div>
                 </li>
                 <li>
                     <h3>Shade</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                         <p>    
-                        A Shade is known to be very shy. 
+                            A Shade is known to be very shy. 
                         </p>    
                         <p>    
-                        There is evidence to suggest that a Shade will stop all paranormal activity if there are people nearby.
+                            There is evidence to suggest that a Shade will stop all paranormal activity if there are people nearby.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -597,23 +617,23 @@
                         <li>Ghost Writing</li>
                         <li>Freezing Temps</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> Shades are much harder to find.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> The ghost will not enter a hunt if there are people nearby.
+                            <b>Strength:</b> Shades are much harder to find.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> The ghost will not enter a hunt if there are people nearby.
                         </p>
                     </div>
                 </li>
                 <li>
                     <h3>Oni</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                         <p>
-                        Onis love to scare their victims as much as possible before attacking.
+                            Onis love to scare their victims as much as possible before attacking.
                         </p>
                         <p>
-                        They are often seen in their physical form, guarding their place of death.
+                            They are often seen in their physical form, guarding their place of death.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -621,20 +641,20 @@
                         <li>Freezing Temps</li>
                         <li>D.O.T.S Projector</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> Oni are more active whilst people are nearby and will drain their sanity faster when manifesting.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> Oni disappear less often while hunting their prey.
+                            <b>Strength:</b> Oni are more active whilst people are nearby and will drain their sanity faster when manifesting.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> Oni disappear less often while hunting their prey.
                         </p>
                     </div>
                 </li>
                 <li>
                     <h3>Goryo</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                         <p>
-                        When a Goryo passes through a DOTS projector, using a video camera is the only way to see it.
+                            When a Goryo passes through a DOTS projector, using a video camera is the only way to see it.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -642,20 +662,20 @@
                         <li>Fingerprints</li>
                         <li>D.O.T.S Projector</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> A Goryo will usually only show itself on camera if there are no people nearby.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> They are rarely seen far from their place of death.
+                            <b>Strength:</b> A Goryo will usually only show itself on camera if there are no people nearby.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> They are rarely seen far from their place of death.
                         </p>
                     </div>
                 </li>
                 <li>
                     <h3>The Twins</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                         <p>
-                        These ghosts have been reported to mimic each other's actions. They alternate their attacks to confuse their prey.
+                            These ghosts have been reported to mimic each other's actions. They alternate their attacks to confuse their prey.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -663,20 +683,20 @@
                         <li>Spirit Box</li>
                         <li>Freezing Temps</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> Either Twin can be angered and initiate an attack on their prey.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> The Twins will often interact with the environment at the same time.
+                            <b>Strength:</b> Either Twin can be angered and initiate an attack on their prey.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> The Twins will often interact with the environment at the same time.
                         </p>
                     </div>
                 </li>
                 <li>
                     <h3>The Mimic</h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                         <p>
-                        The Mimic is an elusive, mysterious, copycat ghost that mirrors traits and behaviours from others, including other ghost types.
+                            The Mimic is an elusive, mysterious, copycat ghost that mirrors traits and behaviours from others, including other ghost types.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
@@ -684,35 +704,35 @@
                         <li>Fingerprints</li>
                         <li>Freezing Temps</li>
                     </ul>
-                    <div id="str-and-weak">
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> We're unsure what this ghost is capable of. Be careful.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> Several reports have noted ghost orb sightings near mimics.
+                            <b>Strength:</b> We're unsure what this ghost is capable of. Be careful.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> Several reports have noted ghost orb sightings near mimics.
                         </p>
                     </div>
                 </li>
                 <li><h3>Thaye</h3></h3>
-                    <journal-entry>
+                    <journal-entry v-if="showJournal">
                         <p>
-                        Thaye have been known to rapidly age over time, even in the afterlife.
+                            Thaye have been known to rapidly age over time, even in the afterlife.
                         </p>
                         <p> 
-                        From what we've learned, they seem to deteriorate faster while within the presence of the living.
+                            From what we've learned, they seem to deteriorate faster while within the presence of the living.
                         </p>
                     </journal-entry>
                     <ul id='three-evidence'>
                         <li>Ghost Orb</li>
                         <li>Ghost Writing</li>
                         <li>D.O.T.S Projector</li>
-                     </ul>
-                     <div id="str-and-weak">
+                    </ul>
+                    <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> Upon entering the location, Thaye will become active, defensive and agile
-                        <br>
-                        <br>
-                        <b>Weakness:</b> Thaye will weaken over time, making them weaker, slower and less aggressive
+                            <b>Strength:</b> Upon entering the location, Thaye will become active, defensive and agile
+                            <br>
+                            <br>
+                            <b>Weakness:</b> Thaye will weaken over time, making them weaker, slower and less aggressive
                         </p>
                     </div>
                 </li>

@@ -64,6 +64,10 @@
     margin: 2rem;
 }
 
+.indent-me-daddy{
+    transform: translate3d(12px, 0px, 10px);
+}
+
 h1 {
     font-family: october-crow;
     text-align: center;
@@ -76,6 +80,16 @@ h1 {
 .hidden-overflow {
     overflow: hidden;
 }
+
+.side-bar{
+    position: fixed;
+    margin: 40vh 0px 0px 0px;
+    max-width: 20vw;
+}
+
+#show-options {
+    display: grid;
+    grid-template-columns: auto auto;}
 
 body {
     font-family: ghostly;
@@ -111,7 +125,7 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     max-width: 80%;
-    margin: 0% 5% 0% 5%;
+    margin: 0% 5% 0% 20vw;
 	/* background: url("https://i.imgur.com/0kjMcUe.png"); */
     text-align: center;
 }
@@ -122,11 +136,7 @@ body {
     text-decoration: line-through wavy;
 }
 
-.included{
-    list-style-type:  "\2714";
-    opacity: 1;
-}
-
+/* 
 #ghost-list .included{
 
     box-shadow:
@@ -138,7 +148,7 @@ body {
       0 0 50px #ffffff50,
       -10px 0 80px rgba(255, 0, 255,0.1),
       10px 0 80px rgba(0, 255, 255,0.1);
-}
+} */
 
 #ghost-list .excluded{
     display: none;
@@ -177,22 +187,6 @@ ul.evidence-list {
 /* maps */
 
 .map-selection-pop-up {
-    /* visibility: visible;
-    display: block;
-    background:#e1e1e1; 
-    margin: 0 auto;
-    width:160px; 
-    position:relative; 
-    z-index:41;
-    top: 25%;
-    padding:30px; 
-    -webkit-box-shadow:0 0 10px rgba(0,0,0,0.4);
-    -moz-box-shadow:0 0 10px rgba(0,0,0,0.4); 
-    box-shadow:0 0 10px rgba(0,0,0,0.4);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: rgba(22,22,22,0.5); */
     display: block;
     z-index:41;
     position: absolute;
@@ -234,6 +228,34 @@ ul.evidence-list {
     height: 200px;
     width: 200px;
     object-fit: cover;
+}
+
+#hard-evidence li{
+    margin: 1rem;
+    list-style-type:  none;
+    border: #000000;
+    background-color: #0000004f;
+    box-shadow: 0px 0px 10px 8px #0000004f;
+}
+
+#hard-evidence li.included{
+    /* list-style-type:  "\2714"; */
+    opacity: 1;
+    background-color: rgb(6 73 18 / 49%);
+    box-shadow: 0px 0px 10px 8px rgb(6 73 18 / 49%);
+}
+
+#hard-evidence li.excluded{
+        /* list-style-type:  "\274C"; */
+        opacity: 0.5;
+        text-decoration: line-through wavy;
+        background-color: rgb(73 6 6 / 49%);
+        box-shadow: 0px 0px 10px 8px rgb(73 6 6 / 49%);
+    }
+
+#hard-evidence {
+    display: grid;
+    grid-template-columns: auto auto auto ;
 }
 
 /* small */

@@ -11,6 +11,11 @@ let app = new Vue({
         currentRotation : 0,
         mapPicked : '',
         topMap : '',
+        showJournal: false,
+        showStrengthweakness: false,
+        showGhostBehavior: false,
+        showNightmareTip: false,
+        showGhostTip: false,
         mapOptions: [
             {'name' : 'Tanglewood-Drive', 'url' : 'images/location_images/tanglewood_drive.PNG', 'descriptive': '„Where it all began; our first reports of the paranormal came from here. It\'s only small, but it holds more secrets than meets the eye.”'},
             {'name' : 'Ridgeview-Court', 'url' : 'images/location_images/ridgeview_court.PNG', 'descriptive': '„This building has a real history of death. Who sold the building to claim its next victims?”'},
