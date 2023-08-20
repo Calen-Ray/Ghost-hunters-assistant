@@ -157,12 +157,15 @@ let app = new Vue({
     }, // end of body-class
 
     scrollModalFeature: function () {
-        $(document).bind('mousewheel', function(e) {
-            var delta = e.originalEvent.wheelDelta;
 
-            console.log('The mouse delta is : ' + delta);
-        });
         this.currentRotation = this.currentRotation - 360 / document.querySelectorAll('.rotate-slider .slides li').length;
+        console.log(this.currentRotation)
+        document.querySelector('.rotate-slider .slides').style['transform'] = 'translateX(-50%) rotate('+this.currentRotation+'deg)'
+    }, // end of body-class
+
+
+    rotateModalOpposite: function () {
+        this.currentRotation = this.currentRotation + 360 / document.querySelectorAll('.rotate-slider .slides li').length;
         console.log(this.currentRotation)
         document.querySelector('.rotate-slider .slides').style['transform'] = 'translateX(-50%) rotate('+this.currentRotation+'deg)'
     }, // end of body-class
@@ -171,6 +174,6 @@ let app = new Vue({
     created: function () {
         this.loadGhosts()
         this.loadHardEvidence()
-        this.scrollModalFeature()
+        // this.scrollModalFeature()
     }//end created
 });
