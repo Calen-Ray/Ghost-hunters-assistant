@@ -192,7 +192,8 @@ let app = new Vue({
     isSelected: function () {
         slides = document.querySelectorAll('.rotate-slider .slides li')
         slides.forEach(ele => {ele.classList.remove('selected-map')})
-        convertedRotation = Math.floor(Math.abs(this.currentRotation)) % 360
+        convertedRotation = this.currentRotation - 360
+        convertedRotation = Math.floor(Math.abs(convertedRotation)) % 360
         slides.forEach(ele => {
             console.log(Math.floor(ele.getAttribute('rotationValue')))
             console.log('vs')
@@ -210,7 +211,7 @@ let app = new Vue({
         this.loadGhosts()
         this.loadHardEvidence()
         window.setTimeout(this.labelModalParts, 500)
-        window.setTimeout(this.forceScrollToTop, 100)
+        window.setTimeout(this.forceScrollToTop, 1000)
         // this.scrollModalFeature()
     },//end created
     computed: {
