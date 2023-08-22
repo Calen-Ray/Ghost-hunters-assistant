@@ -130,7 +130,7 @@
                     </div>
                     <div id="ghost-behavior" v-if="showGhostBehavior">
                         <p>
-                            Spirits have no unique behavior and can easily be mistaken for another entity. Once the sanity average is below 50%, smudge the ghost while it is not hunting. If it hunts within the next three minutes, it is <i><u>not</u></i> a Spirit.
+                            Spirits are tricky ghosts, with one discerning trait: If they are smudged, while not hunting, they will not hunt for the next 3 minutes. This is best utilized after the hunt sanity threshold is under 50%.
                         </p>
                         <div id="ghost-tip" v-if="showGhostTip">
                             <p>
@@ -138,7 +138,7 @@
                             </p>
                         </div>
                         <div id="nightmare-tip" v-if="showNightmareTip">
-                            <b>Nightmare Tip:</b> Players should wait for a hunt or a burnt crucifix to confirm that the average sanity is low enough.
+                            <b>Nightmare Tip:</b> You can confirm sanity is low enough by waiting for the first hunt, or a burnt crucifix.
                         </div>
                     </div>
                 </li>
@@ -165,10 +165,10 @@
                     <div id="ghost-behavior" v-if="showGhostBehavior">
                         <div id="ghost-strat">
                             <p>
-                                Poltergiests will occasionally throw an item with the "force" EMF value of 2-6 instead of the average 1-3. They have the ability to throw multiple items at once, decreasing the sanity of all nearby players in line-of-sight by a percentage equal to the number of items thrown, multiplied by 2. When hunting, a Poltergeist will throw an item every half a second.
+                                Poltergeists lower player sanity by throwing multiple items at once. The more items thrown, the higher the sanity reduction (items x 2). Occasionally, they throw items with EMF value 2-6. During hunts, they toss items every half second. During hunts, a Poltergeist throws items every half second.
                             </p>
                             <p>  
-                                Scatter items in small piles around the ghost room. If an object is flung with force, or multiple objects are thrown, it may be a Poltergeist.
+                                Scatter items in small piles around the ghost room. Forceful item throws or multiple tosses suggest a Poltergeist.
                             </p>
                         </div>
                         <div id="ghost-tip" v-if="showGhostTip">
@@ -203,15 +203,15 @@
                     </div>
                     <div id="ghost-behavior" v-if="showGhostBehavior">
                         <p>
-                            Mares cannot turn lights on, and are more likely to turn the lights off as an interaction, or perform light-shattering events. If a light, TV, or computer is activated within 4 metres of the Mare, it might promptly switch off. This has a minimum 10-second cooldown between interactions. Finally, when a Mare roams, it is more likely to choose an unlit room. 
+                            Mares can't switch lights on but often turn them off, they also prefer light shattering events. If a light is turned on within 4 metres, the Mare might promptly switch it off, with a minimum 10-second cooldown. While roaming, Mares prefer unlit rooms. 
                         </p>
                         <div id="ghost-tip" v-if="showGhostTip">
                             <p>
-                                <b>Note:</b> If the lights are off, the hunt sanity threshold is 60%, if the lights are on, it is decreased to 40%. Other sources of light, such as brought-in equipment and candles, do not affect this threshold.
+                                <b>Note:</b> A Mare's hunt sanity threshold is 60% in darkness; in light, it's lowered to 40%. This is unaffected by sources such as equipment or candles.
                             </p>
                         </div>
                         <div id="nightmare-tip" v-if="showNightmareTip">
-                            <b>Nightmare Tip:</b> If the lights near the ghost are consistently on, and it frequently changes its favorite room to a dark area, it could be a Mare.
+                            <b>Nightmare Tip:</b> If the lights are on, and the ghost room is regularly changing to a darker location, it could be an indication of a Mare.
                         </div>
                     </div>
                 </li>
@@ -237,10 +237,10 @@
                         </div>
                         <div id="ghost-behavior" v-if="showGhostBehavior">
                             <p>
-                                Demons are aggressive: With a hunt sanity threshold at 70% and a minimum cooldown of 20 seconds (down from 25), demons also possess a 60% larger interaction range. Smudging stops hunts for 60 seconds (from 90), but as a weakness, the crucifix range is increased by 60%.
+                                Demons are aggressive: With a 70% hunt sanity threshold, and a 20-second cooldown (down from 25), demons also possess a 60% larger interaction range. Smudging stops hunts for 60 seconds (from 90), but as a weakness, the crucifix range has a heightened effect.
                             </p>
                             <p>
-                                The Demon has an ability that allows it to automatically start a hunt, regardless of current average sanity. This hunt can be blocked by normal prevention methods.
+                                A Demon has the ability to trigger hunts regardless of average sanity, although this can still be blocked by standard prevention methods.
                             </p>
                             <div id="ghost-tip" v-if="showGhostTip">
                             <p>
@@ -274,11 +274,11 @@
                         </div>
                         <div id="ghost-behavior" v-if="showGhostBehavior">
                                 <p>
-                                    Yokai become more likely to hunt and interact when they hear voices nearby, their hunt sanity threshold will spike to 80%. The Yokai's other notable trait is their limited ability to detect hidden players during a hunt: Yokai can only hear voices and active electronics within 2.5 metres, they are less likely to chase a player if they continously lose track of them, and will not be attracted to electronics unless the Yokai was already near a player. For Yokai, the electronic disruption range is greater than the ghost's ability to sense. 
+                                    Yokai are reactive to voices, speaking nearby will spike their hunt sanity threshold to 80% and they become more likely to hunt and interact. However their other notable trait is their limited ability to track hidden players. They are less likely to pursue a player they regularly lose track of, or be lured by electronics unless the ghost was already nearby.
                                 </p>
                             <div id="ghost-tip" v-if="showGhostTip">
                                 <p>
-                                    <b>Note:</b> If a player uses the Monkey Paw's wish to unblock a hiding spot the ghost is able to hear speech and electronics of the player who used it from any distance, overriding the Yokai's usual weakness. 
+                                    <b>Note:</b> A Monkey Paw's wish to unblock a hiding spot can be heard by the ghost from any distance, overriding the Yokai's usual weakness. However, a Yokai has to be closer than other ghosts to hear the Music Box.
                                 </p>
                             </div>
                             <div id="nightmare-tip" v-if="showNightmareTip">
@@ -308,14 +308,11 @@
                         </div>
                         <div id="ghost-behavior" v-if="showGhostBehavior">
                             <p>
-                                Myling will produce paranormal sounds (voices, growls, etc), heard through the Parabolic Microphone, more frequently than other ghosts, but will be very quiet when hunting. Their footsteps and vocalization will only be audible within a range only slightly greater than the range for electronic interference. (12 instead of the usual 20 metres). Its footsteps will begin as muffled, but become discernible as the Myling gets closer.
-                            </p>
-                            <p>
-                                If the ghost is only audible when electrical equipment starts flickering and it’s on the same floor, it is probably a Myling. However, this test is not guaranteed. 
+                                Mylings will produce frequent sounds (voices, growls, etc) heard through the Parabolic Microphone. However, they're stealthy hunters, with footsteps and vocalizations audible in a range only slightly larger than electronic interference (12 metres). Their footsteps will sound muffled, but become discernible as the Myling gets closer.
                             </p>
                         <div id="ghost-tip" v-if="showGhostTip">
                             <p>
-                                <b>Note:</b> There may occasionally be a bug where the ghost temporarily does not flicker electronics on the proper floor when changing stories. Footsteps may be heard before the electronics flicker depending on your audio setup.
+                                <b>Note:</b> Depending on your audio setup, it's still possible to hear footsteps before electronics flicker.
                             </p>
                         </div>
                         <div id="nightmare-tip" v-if="showNightmareTip">
