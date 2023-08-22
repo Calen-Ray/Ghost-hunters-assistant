@@ -300,3 +300,25 @@ ul.evidence-list {
 /* .Asylum {
         background-image: url('images/location_images/');
 } */
+
+.EMF-5 {
+    list-style-image:  url("images/hard_evidence/emf_sprite.webp");
+}
+.Fingerprints {
+    list-style-image:  url("images/hard_evidence/ultraviolet_sprite.webp");
+}
+.Ghost-Writing {
+    list-style-image:  url("images/hard_evidence/closedbook_sprite.webp");
+}
+.Freezing-Temps {
+    list-style-image:  url("images/hard_evidence/thermometer_sprite.webp");
+}
+.DOTS-Projector {
+    list-style-image:  url("images/hard_evidence/DOTS_sprite.webp");
+}
+.Ghost-Orb {
+    list-style-image:  url("images/hard_evidence/orb_sprite.webp");
+}
+.Spirit-Box {
+    list-style-image:  url("images/hard_evidence/spiritbox_sprite.webp");
+}
