@@ -308,7 +308,7 @@
                         </div>
                         <div id="ghost-behavior" v-if="showGhostBehavior">
                             <p>
-                                Mylings will produce frequent sounds (voices, growls, etc) heard through the Parabolic Microphone. However, they're stealthy hunters, with footsteps and vocalizations audible in a range only slightly larger than electronic interference (12 metres). Their footsteps will sound muffled, but become discernible as the Myling gets closer.
+                                Mylings will produce frequent sounds (voices, growls, etc) heard through the Parabolic Microphone. However, they're stealthy hunters, with footsteps and vocalizations audible in a range only slightly larger than electronic interference. Their footsteps will sound muffled, but become discernible as the Myling gets closer.
                             </p>
                         <div id="ghost-tip" v-if="showGhostTip">
                             <p>
@@ -337,12 +337,29 @@
                     </ul>
                     <div id="str-and-weak" v-if="showStrengthweakness">
                         <p>
-                        <b>Strength:</b> A Raiju can siphon power from nearby electrical devices, making it move faster.
-                        <br>
-                        <br>
-                        <b>Weakness:</b> Raiju are constantly disrupting electronic equipment when attacking, making it easier to track.
+                            <b>Strength:</b> A Raiju can siphon power from nearby electrical devices, making it move faster.
+                            <br>
+                            <br>
+                            <b>Weakness:</b> Raiju are constantly disrupting electronic equipment when attacking, making it easier to track.
                         </p>
                     </div>
+                        <div id="ghost-behavior" v-if="showGhostBehavior">
+                            <p>
+                                Raiju tap into electronic energy, enhancing their speed and aggression. Near active electronics, their hunt sanity threshold spikes to 65%. When manifesting, it disrupts electronics at a greater range than other ghosts. During hunts, Raiju will accelerate when they are near active electronics, they can also gain this boost when they see a player holding electric equipment. Their range for their ability is fixed based on the size of the map, and can reach outside of the investigation area.
+                            </p>
+                            <p>
+                                A Raiju's speed boost and hunt sanity threshold remain unaffected by the following equipment: head mounted cameras, cameras placed on the ground, inactive motion and sound sensors, inactive D.O.T.S Projectors, and items in inventory (except turned-on flashlights).
+                            </p>
+                        <div id="ghost-tip" v-if="showGhostTip">
+                            <p>
+                                <b>Note:</b> If the ghost consistently roams quickly while not chasing players, the ghost is likely a Raiju.
+                            </p>
+                        </div>
+                        <div id="nightmare-tip" v-if="showNightmareTip">
+                            <b>Nightmare Tip:</b> <i>No additional information at this time.</i>
+                        </div>
+                    </div>
+
                 </li>
                 <li>
                     <h3>Moroi</h3>
@@ -363,6 +380,21 @@
                             <br>
                             <b>Weakness:</b> Moroi suffer from hyperosmia, weakening them for longer periods.
                         </p>
+                    </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Moroi will curse players who hear their voice through a Spirit Box or Parabolic Microphone. The cursed will have their sanity drain doubled, with house lights and firelights no longer slowing the effect. However, leaving the investigation area will still pause the drain, and taking Sanity Medication will break the curse entirely. 
+                        </p>
+                        <p>
+                            Once average sanity reaches 50% the Moroi will gain speed for every 5% drop thereafter, while hunting they are also able to accelerate their speed if they can see a player. As a weakness, smudge sticks are 50% more effective in blinding the ghost during a hunt.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b> Multiple players can be cursed at once, but the effect will not stack.
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b> On limited evidence games, Moroi will always have Spirit Box as an evidence type.
                     </div>
                 </li>
                 <li>
@@ -388,6 +420,18 @@
                             <b>Weakness:</b> Wraiths are afraid of Salt and will actively avoid it.
                         </p>
                     </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti veritatis, quo aliquam vero omnis facere adipisci eligendi sunt, debitis earum quos incidunt illum enim, aliquid odit nisi? Praesentium, velit nam.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b>
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b> 
+                    </div>
                 </li>
                 <li>
                     <h3>Banshee</h3>
@@ -412,6 +456,18 @@
                             <b>Weakness:</b> Banshees can sometimes be heard screaming with a parabolic microphone.
                         </p>
                     </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure minima, cumque possimus temporibus ipsa perspiciatis quo laboriosam debitis cupiditate voluptatum facilis quam eum voluptas earum molestias vitae commodi ipsam reprehenderit.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b>
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b>
+                    </div>
                 </li>
                 <li>
                     <h3>Revenant</h3>
@@ -435,6 +491,18 @@
                             <b>Weakness:</b> Hiding from the Revenant will cause it to move very slowly.
                         </p>
                     </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo totam unde porro explicabo beatae ut esse tempore, et provident sint doloremque repellendus facere, harum atque qui laboriosam vero veniam delectus.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b>
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b>
+                    </div>
                 </li>
                 <li>
                     <h3>Yurei</h3>
@@ -455,6 +523,18 @@
                             <br>
                             <b>Weakness:</b> Smudging the Yurei's place of death will trap it temporarily, reducing how much it wanders.
                         </p>
+                    </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo totam unde porro explicabo beatae ut esse tempore, et provident sint doloremque repellendus facere, harum atque qui laboriosam vero veniam delectus.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b>
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b>
                     </div>
                 </li>
                 <li>
@@ -477,6 +557,18 @@
                             <br>
                             <b>Weakness:</b> Hantus move slower in warmer areas.
                         </p>
+                    </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo totam unde porro explicabo beatae ut esse tempore, et provident sint doloremque repellendus facere, harum atque qui laboriosam vero veniam delectus.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b>
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b>
                     </div>
                 </li>
                 <li>
@@ -502,6 +594,18 @@
                             <b>Weakness:</b> When threatened, this ghost will be less likely to hunt.
                         </p>
                     </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo totam unde porro explicabo beatae ut esse tempore, et provident sint doloremque repellendus facere, harum atque qui laboriosam vero veniam delectus.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b>
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b>
+                    </div>
                 </li>
                 <li>
                     <h3>Obake</h3>
@@ -525,6 +629,18 @@
                         <br>
                         <b>Weakness:</b> Sometimes this ghost will shapeshift, leaving behind unique evidence.
                         </p>
+                    </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo totam unde porro explicabo beatae ut esse tempore, et provident sint doloremque repellendus facere, harum atque qui laboriosam vero veniam delectus.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b>
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b>
                     </div>
                 </li>
                 <li>
@@ -550,6 +666,18 @@
                             <b>Weakness:</b> Deogens require a lot of energy to form and will move very slowly when approaching its victim.
                         </p>
                     </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo totam unde porro explicabo beatae ut esse tempore, et provident sint doloremque repellendus facere, harum atque qui laboriosam vero veniam delectus.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b>
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b>
+                    </div>
                 </li>
                 <li>
                     <h3>Phantom</h3>
@@ -573,6 +701,18 @@
                             <br>
                             <b>Weakness:</b> Taking a photo of the Phantom will make it temporarily disappear.
                         </p>
+                    </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo totam unde porro explicabo beatae ut esse tempore, et provident sint doloremque repellendus facere, harum atque qui laboriosam vero veniam delectus.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b>
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b>
                     </div>
                 </li>
                 <li>
@@ -598,6 +738,18 @@
                             <b>Weakness:</b> Turning off the location's power source will prevent the Jinn from using its ability.
                         </p>
                     </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo totam unde porro explicabo beatae ut esse tempore, et provident sint doloremque repellendus facere, harum atque qui laboriosam vero veniam delectus.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b>
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b>
+                    </div>
                 </li>
                 <li>
                     <h3>Shade</h3>
@@ -621,6 +773,18 @@
                             <br>
                             <b>Weakness:</b> The ghost will not enter a hunt if there are people nearby.
                         </p>
+                    </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo totam unde porro explicabo beatae ut esse tempore, et provident sint doloremque repellendus facere, harum atque qui laboriosam vero veniam delectus.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b>
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b>
                     </div>
                 </li>
                 <li>
@@ -646,6 +810,18 @@
                             <b>Weakness:</b> Oni disappear less often while hunting their prey.
                         </p>
                     </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo totam unde porro explicabo beatae ut esse tempore, et provident sint doloremque repellendus facere, harum atque qui laboriosam vero veniam delectus.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b>
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b>
+                    </div>
                 </li>
                 <li>
                     <h3>Goryo</h3>
@@ -666,6 +842,18 @@
                             <br>
                             <b>Weakness:</b> They are rarely seen far from their place of death.
                         </p>
+                    </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo totam unde porro explicabo beatae ut esse tempore, et provident sint doloremque repellendus facere, harum atque qui laboriosam vero veniam delectus.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b>
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b>
                     </div>
                 </li>
                 <li>
@@ -688,6 +876,18 @@
                             <b>Weakness:</b> The Twins will often interact with the environment at the same time.
                         </p>
                     </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo totam unde porro explicabo beatae ut esse tempore, et provident sint doloremque repellendus facere, harum atque qui laboriosam vero veniam delectus.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b>
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b>
+                    </div>
                 </li>
                 <li>
                     <h3>The Mimic</h3>
@@ -708,6 +908,18 @@
                             <br>
                             <b>Weakness:</b> Several reports have noted ghost orb sightings near mimics.
                         </p>
+                    </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo totam unde porro explicabo beatae ut esse tempore, et provident sint doloremque repellendus facere, harum atque qui laboriosam vero veniam delectus.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b>
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b>
                     </div>
                 </li>
                 <li><h3>Thaye</h3></h3>
@@ -731,6 +943,18 @@
                             <br>
                             <b>Weakness:</b> Thaye will weaken over time, making them weaker, slower and less aggressive
                         </p>
+                    </div>
+                    <div id="ghost-behavior" v-if="showGhostBehavior">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo totam unde porro explicabo beatae ut esse tempore, et provident sint doloremque repellendus facere, harum atque qui laboriosam vero veniam delectus.
+                        </p>
+                    <div id="ghost-tip" v-if="showGhostTip">
+                        <p>
+                            <b>Note:</b>
+                        </p>
+                    </div>
+                    <div id="nightmare-tip" v-if="showNightmareTip">
+                        <b>Nightmare Tip:</b>
                     </div>
                 </li>
             </ul> 
